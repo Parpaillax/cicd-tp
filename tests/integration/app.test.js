@@ -8,4 +8,3 @@ describe('GET /hello', () => {
     expect(res.text).toBe('Hello world');
   });
 });
-

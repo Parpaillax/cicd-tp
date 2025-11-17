@@ -5,4 +5,3 @@ describe('getGreeting', () => {
     expect(getGreeting()).toBe('Hello world');
   });
 });
-
