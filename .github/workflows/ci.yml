@@ -39,7 +39,7 @@ jobs:
       image: ttl.sh/${{ needs.install.outputs.IMAGE_NAME }}:1h
     steps:
       - uses: actions/checkout@v4
-      - run: ls cd /app && npm run lint
+      - run: ls /app && cd /app/ && npm run lint
 
   test:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
       image: ttl.sh/${{ needs.install.outputs.IMAGE_NAME }}:1h
     steps:
       - uses: actions/checkout@v4
-      - run: ls cd /app && npm test
+      - run: ls /app && cd /app/ && npm test
 
 
       
