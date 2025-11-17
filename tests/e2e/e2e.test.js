@@ -22,3 +22,5 @@ describe('E2E GET /hello', () => {
     expect(res.data).toBe('Hello world');
   });
 });
+
+//Test
