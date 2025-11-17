@@ -16,7 +16,7 @@ jobs:
       - name: Generate UUID
         id: generate-uuid
         run: |
-          UUID=$(sha256sum package{,-lock}.json | sha256sum | awk '{ print $1 }')
+          UUID=$(find . -type f -not -path './.git/*' -exec sha256sum {} \; | sha256sum | awk '{ print $1 }')
           echo "IMAGE_NAME=${UUID}" >> $GITHUB_OUTPUT
           echo "IMAGE_NAME=${UUID}" >> $GITHUB_ENV
       - name: Check if image exists
