@@ -19,7 +19,7 @@ describe('E2E GET /hello', () => {
   it('responds with Hello world', async () => {
     const res = await axios.get(`${baseURL}/hello`);
     expect(res.status).toBe(200);
-    expect(res.data).toBe('Hello world !');
+    expect(res.data).toBe('Hello world');
   });
 });
 
