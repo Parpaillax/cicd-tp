@@ -31,24 +31,28 @@ jobs:
       - name: Push docker image
         if: steps.check-image-exists.outputs.BUILD_IMAGE == 'true'
         run: docker push ttl.sh/${IMAGE_NAME}:1h
+      - name: Install depandencies
+        if: steps.check-image-exists.outputs.BUILD_IMAGE == 'true'
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/app ttl.sh/${IMAGE_NAME}:1h npm ci
 
   lint:
     runs-on: ubuntu-latest
     needs: install
-    # container:
-    #   image: ttl.sh/${{ needs.install.outputs.IMAGE_NAME }}:1h
+    container:
+      image: ttl.sh/${{ needs.install.outputs.IMAGE_NAME }}:1h
     steps:
       - uses: actions/checkout@v4
-      - run: npm run lint
+      - run: ls /app && cd /app && npm run lint
 
   test:
     runs-on: ubuntu-latest
     needs: install
-    # container:
-    #   image: ttl.sh/${{ needs.install.outputs.IMAGE_NAME }}:1h
+    container:
+      image: ttl.sh/${{ needs.install.outputs.IMAGE_NAME }}:1h
     steps:
       - uses: actions/checkout@v4
-      - run: npm test
+      - run: ls /app && cd /app && npm test
 
 
       
