@@ -3,6 +3,6 @@ FROM node:22-alpine
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json package-lock.json . /app
+COPY . ./
 RUN npm ci
 
