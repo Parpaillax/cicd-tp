@@ -27,7 +27,7 @@ jobs:
           fi
       - name: Build docker image
         if: steps.check-image-exists.outputs.BUILD_IMAGE == 'true'
-        run: docker build -t ttl.sh/${IMAGE_NAME}:1h .
+        run: docker build -t ttl.sh/${IMAGE_NAME}:1h -f Dockerfile .
       - name: Push docker image
         if: steps.check-image-exists.outputs.BUILD_IMAGE == 'true'
         run: docker push ttl.sh/${IMAGE_NAME}:1h
